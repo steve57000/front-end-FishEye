@@ -1,0 +1,147 @@
+
+#contact_modal {
+    display: none;
+}
+.photographer_section_profil {
+    width: 100%;
+    display: block;
+}
+
+.photograph_header {
+    background-color: #FAFAFA;
+    height: 300px;
+    margin: 0 100px;
+}
+
+.photographer_card_page_profil {
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.photographer_card_page_profil figure {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    width: 92%;
+    height: 100%;
+    justify-items: center;
+}
+
+
+@media (max-width: 850px) {
+    .photographer_card_page_profil figure {
+        grid-template-columns: 1fr 1fr;
+
+    }
+    .photographer_card_page_profil figure figcaption {
+        grid-column-gap : 100%;
+    }
+
+}
+
+.figure-photograph img {
+
+}
+.figure-photograph .photographer_card_info {
+    text-align: left;
+}
+.figure-photograph .photographer_card_info h1 {
+    font-size: calc(1.5rem + 1.8vw);
+    letter-spacing: 0.1rem;
+    text-align: left;
+    margin: 0 0 0.4rem 0;
+}
+
+.figure-photograph .photographer_card_city {
+    font-size: calc(0.8rem + 0.8vw);
+}
+
+.figure-photograph .photographer_card_tagline {
+    font-size: calc(0.5rem + 0.6vw);
+}
+
+.photographer_media  {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 20px 100px 0 100px;
+    justify-content: center;
+}
+
+.photograph-media-card {
+    max-width: 300px;
+}
+
+.photograph_media-card video{
+    object-fit: cover;
+}
+
+.contact_button {
+    position: relative;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    padding: 11px;
+    margin: 0 auto;
+    width: 170px;
+    height: 70px;
+    border: none;
+    background-color: #901C1C;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal {
+    border-radius: 5px;
+    background-color: #DB8876;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 35px;
+    margin: auto;
+}
+
+.modal header {
+    justify-content: space-between;
+    width: 100%;
+}
+
+.modal header img {
+    cursor: pointer;
+}
+
+.modal header h2 {
+    font-size: 64px;
+    font-weight: normal;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+form label {
+    color: #312E2E;
+    font-size: 36px;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: self-start;
+    margin-bottom: 26px;
+}
+
+form input {
+    width: 100%;
+    height: 68px;
+    border: none;
+    border-radius: 5px;
+}

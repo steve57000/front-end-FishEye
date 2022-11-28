@@ -1,0 +1,38 @@
+@import url("photographerPageProfil.css");
+@import url("photographer.css");
+
+body {
+    font-family: "DM Sans", sans-serif;
+    margin: 0 auto;
+    max-width: 1440px;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 90px;
+}
+header a {
+    display: inline-block;
+    margin-left: 100px;
+}
+
+header a:focus-visible {
+    box-shadow : 0 0 3px 3px #95FFF9;
+    outline: #95FFF9;
+}
+
+h1 {
+    color: #901C1C;
+    margin-right: 100px;
+}
+ h1:focus-visible {
+     box-shadow : 0 0 3px 3px #95FFF9;
+     outline: none;
+ }
+.logo {
+    height: 50px;
+}
+

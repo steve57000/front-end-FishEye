@@ -1,0 +1,44 @@
+<!Doctype HTML>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <link href="./css/style.css" rel="stylesheet" >
+    
+    <title>Fisheye</title>
+  </head>
+  <body>
+    <header>
+        <a href="index.html" tabindex="1">
+          <img src="assets/images/logo.png" class="logo" alt="Fisheye Home Page">
+        </a>
+        <h1 tabindex="2">Nos photographes</h1>
+    </header>
+    <main id="main">
+        <div class="photographer_section"></div>
+        <div class="photographer_media"></div>
+    </main>
+    
+    <!-- Factory -->
+    <script src="/js/factories/PhotographersFactory.js"></script>
+    
+    <!--  Models  -->
+    <script src="/js/models/Photographer.js"></script>
+    <script src="/js/models/PhotographerMedia.js"></script>
+    
+    <!--  Templates  -->
+    <script src="/js/templates/PhotographerCard.js"></script>
+    <script src="/js/templates/PhotographerCardPageProfil.js"></script>
+    <script src="/js/templates/PhotographerMediaCard.js"></script>
+    
+    <!--  Api  -->
+    <script src="/js/api/Api.js"></script>
+    
+    <!--  Entry point  -->
+    <script src="/js/App.js"></script>
+  </body>
+</html>

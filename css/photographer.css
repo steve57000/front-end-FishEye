@@ -1,0 +1,100 @@
+
+.photographer_section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 70px;
+    margin-top: 100px;
+}
+
+@media screen and (max-width: 1080px) {
+    .photographer_section {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 780px) {
+    .photographer_section {
+        grid-template-columns: 1fr ;
+    }
+}
+
+.photographer_card {
+    width: 100%;
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-weight: 400;
+}
+
+.photographer_card:focus-visible {
+    box-shadow : 0 0 3px 3px #95FFF9;
+    outline: none;
+}
+
+.figure-photograph-home {
+    margin: 0;
+}
+
+figure:focus-visible {
+    box-shadow : 0 0 3px 3px #95FFF9;
+    outline: none;
+}
+
+.figure-photograph-home a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+}
+
+.figure-photograph-home img,
+.figure-photograph img {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.figure-photograph-home .photographer_card_info,
+.figure-photograph-home .photographer_card_name {
+    text-align: center;
+}
+
+.figure-photograph-home .photographer_card_info:focus-visible {
+    box-shadow : 0 0 3px 3px #95FFF9;
+    outline: none;
+}
+
+.figure-photograph-home .photographer_card_name {
+    color: #D3573C;
+    font-size: 36px;
+    margin: 0.5em 0 0.2em 0;
+}
+
+.figure-photograph-home .photographer_card_city,
+.figure-photograph-home .photographer_card_tagline,
+.figure-photograph-home .photographer_card_price
+{
+    margin: 0 0 0.5em 0;
+}
+
+figure .photographer_card_city {
+    color: #901C1C;
+    font-size: 19px;
+}
+
+figure .photographer_card_tagline {
+    font-size: 13px;
+}
+
+ figure .photographer_card_price {
+    font-size: 11px;
+    color: #757575;
+}
+
+ figure  a:hover,
+ figure  a:focus,
+ figure  a:focus-visible {
+    box-shadow : 0 0 3px 3px #95FFF9;
+    outline: none;
+}
