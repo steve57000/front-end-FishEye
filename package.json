@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "eslint": "^8.28.0"
+  },
+  "name": "fish-eye",
+  "version": "1.0.0",
+  "description": "Projet 6",
+  "main": "index.html",
+  "directories": {
+    "lib": "lib"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/steve57000/front-end-FishEye.git"
+  },
+  "author": "Steve Bell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/steve57000/front-end-FishEye/issues"
+  },
+  "homepage": "https://github.com/steve57000/front-end-FishEye#readme"
+}
