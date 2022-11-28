@@ -2,9 +2,12 @@ class App {
     constructor() {
         this.$sectionPhotographer = document.querySelector('.photographer_section')
         this.$sectionPhotographerMedia = document.querySelector('.photographer_media')
+
         this._photographersApi = new PhotographerApi('/data/photographers.json')
+
         this._params = new URL(document.location).searchParams
         this._idProfil = this._params.get('id')
+
         this.FullMedias = []
         this.FullPhotographers = []
         this.PhotographerData = []
