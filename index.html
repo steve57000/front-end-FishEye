@@ -6,22 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" >
     
     <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="./css/style.css" rel="stylesheet" >
-    
     <title>Fisheye</title>
+
   </head>
   <body>
-    <header>
-        <a href="index.html" tabindex="1">
-          <img src="./assets/images/logo.png" class="logo" alt="Fisheye Home Page">
+    <header dir="ltr">
+        <a href="index.html" >
+          <img src="assets/images/logo.png" class="logo" alt="Lien vers la page d'accueil Fisheye">
         </a>
-        <h1 tabindex="2">Nos photographes</h1>
+        <h1>Nos photographes</h1>
     </header>
-    <main id="main">
-        <div class="photographer_section"></div>
-        <div class="photographer_media"></div>
-    </main>
+    
+    <main id="main"></main>
+    
+    <!-- Lib -->
+    <script src="./lib/filter/index.js"></script>
+
+    <!-- Utils -->
+    <script src="./js/utils/contactForm.js"></script>
+    <script src="./js/utils/accessibilityFocus.js"></script>
+    <script src="./js/utils/lightbox.js"></script>
+    <script src="./js/utils/filtersMedias.js"></script>
+    <script src="./js/utils/myFunction.js"></script>
     
     <!-- Factory -->
     <script src="./js/factories/PhotographersFactory.js"></script>
@@ -29,16 +38,46 @@
     <!--  Models  -->
     <script src="./js/models/Photographer.js"></script>
     <script src="./js/models/PhotographerMedia.js"></script>
+
+    <!-- Adapters -->
+    <script src="./js/adapters/FilterMediaAdapter.js"></script>
     
     <!--  Templates  -->
     <script src="./js/templates/PhotographerCard.js"></script>
     <script src="./js/templates/PhotographerCardPageProfil.js"></script>
     <script src="./js/templates/PhotographerMediaCard.js"></script>
+    <script src="./js/templates/FilterForm.js"></script>
+    <script src="./js/templates/LightboxModal.js"></script>
+    <script src="./js/templates/ModalForm.js"></script>
+
+    <!--  Decorators  -->
+<!--    <script src="./js/decorators/imgCardWithLightbox.js"></script>-->
+    
+    <!--  Db  -->
+    <script src="./js/db/User.js"></script>
     
     <!--  Api  -->
     <script src="./js/api/Api.js"></script>
     
     <!--  Entry point  -->
     <script src="./js/App.js"></script>
+
+    <!--  Jquery/ Bootstrap  -->
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"
+    ></script>
+    <script
+            src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"
+    ></script>
+<!--    <script-->
+<!--            src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"-->
+<!--            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"-->
+<!--            crossorigin="anonymous"-->
+<!--    ></script>-->
+  
   </body>
 </html>
