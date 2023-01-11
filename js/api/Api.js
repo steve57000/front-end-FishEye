@@ -18,7 +18,7 @@ class Api {
                     media
                 }
             })
-            .catch(err => console.log('an error occurs', err))
+            .catch(err => return console.log('an error occurs', err))
     }
 
 }
