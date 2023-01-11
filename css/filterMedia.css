@@ -1,0 +1,77 @@
+#filter-select {
+    border-radius: 5px;
+    width: 170px;
+    height: 59px;
+    font-size: 18px;
+    text-align: left;
+    background-color: #901C1C;
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+#filter-select:focus,
+#filter-select:hover
+{
+    background-color: #d3573c;
+}
+
+/* The container <div> - needed to position the dropdown content */
+#filter-form-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #901C1C;
+    width: 170px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    margin: 0 0 0 61px;
+    padding: 0 0 5px 0;
+    z-index: 1;
+}
+
+.show {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Links inside the dropdown */
+.select-items {
+    background-color: #901C1C;
+    color: white;
+    height: 59px;
+    width: 90%;
+    /*padding: 12px 16px;*/
+    list-style: none;
+    margin: 0 ;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    border: none;
+
+    cursor: pointer;
+}
+
+/*.select-items:first-child {*/
+/*    border-top: 2px solid #D3573c;*/
+/*}*/
+
+.select-items:focus,
+.select-items:hover {
+    outline: none;
+    border: none;
+    width: 100%;
+    /*background-color: #d3573c;*/
+    border-top: 2px solid #D3573c;
+}
+
+.select-items:focus > #filter-select,
+.select-items:hover > #filter-select {
+    border-radius: 5px 0;
+}
