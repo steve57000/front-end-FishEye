@@ -15,7 +15,7 @@ class PhotographerCard {
         addMultipleAttributes(elementLink, {
             'href': `?id=${this._photographer.id}`,
             'aria-label': 'Ouvrir la page du photographe',
-            'tabindex': "3",
+            // 'tabindex': "3",
             'title': `Voir le profil de ${this._photographer.name}`
         })
 
@@ -34,7 +34,7 @@ class PhotographerCard {
 
         const elementFigcaption = document.createElement('figcaption')
         elementFigcaption.className = 'photographer_card_info'
-        elementFigcaption.setAttribute('tabindex', '3')
+        // elementFigcaption.setAttribute('tabindex', '3')
 
         const elementCity = document.createElement('p')
         elementCity.className = 'photographer_card_city'
@@ -60,11 +60,6 @@ class PhotographerCard {
 
         $elementArticle.appendChild(elementFigure)
 
-        function addMultipleAttributes(el, attrs) {
-            for(let key in attrs) {
-                el.setAttribute(key, attrs[key]);
-            }
-        }
         return $elementArticle
     }
 }
