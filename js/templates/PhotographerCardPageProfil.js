@@ -1,24 +1,43 @@
 class PhotographerCardPageProfil {
     constructor(photographer) {
         this._photographer = photographer;
+        this.$footerElement = document.querySelector('.footer-photographer-page')
+
+        const elementDivLikes = document.createElement('div')
+
+        const elementSpanLikes = document.createElement('span')
+        elementSpanLikes.id = 'totalLikes'
+        const elementI = document.createElement( 'i' )
+        elementI.setAttribute('class' , 'fa fa-heart i-total-likes')
+        elementI.style.color = 'red'
+
+        elementDivLikes.appendChild( elementSpanLikes )
+        elementDivLikes.appendChild( elementI )
+        this.$footerElement.appendChild( elementDivLikes )
+
     }
 
     modifyPhotographerCard() {
         // Get HTML head element
         const head = document.getElementsByTagName('HEAD')[0];
-        // console.log(head.childNodes);
+
         const selectTitle = head.childNodes[13]
         selectTitle.textContent = 'Fisheye - photographe'
 
-        const changeClassNameSection = document.querySelector('.photographer_section')
-        changeClassNameSection.className = 'photographer_section_profil'
+        const changeClassNameSection = document.getElementById('photographer_section')
+        changeClassNameSection.id = 'photographer_section_profil'
 
         const $elementDiv = document.createElement( 'div' )
         $elementDiv.classList.add('photograph_header')
 
         const elementButton = document.createElement( 'button' )
-        elementButton.classList.add('contact_button')
-        elementButton.setAttribute('onClick', 'displayModal()')
+        elementButton.className = 'contact_button'
+        addMultipleAttributes(elementButton, {
+            'tabindex': 0,
+            'data-toggle': 'modal',
+            'data-target': '#contact_modal',
+            'onclick': 'displayModal()'
+        })
         elementButton.textContent = 'Contactez-moi'
 
         const elementArticle = document.createElement( 'article' )
@@ -38,7 +57,7 @@ class PhotographerCardPageProfil {
 
         const elementFigcaption = document.createElement('figcaption')
         elementFigcaption.className = 'photographer_card_info'
-        elementFigcaption.setAttribute('tabindex', '3')
+
 
         const elementName = document.querySelector('h1')
         elementName.textContent = `${this._photographer.name}`
@@ -64,17 +83,15 @@ class PhotographerCardPageProfil {
 
         elementFigure.appendChild(elementButton)
         elementFigure.appendChild(elementImage)
-        elementFigcaption.appendChild(elementPrice)
+        // elementFigcaption.appendChild(elementPrice)
 
         elementArticle.appendChild(elementFigure)
 
         $elementDiv.appendChild(elementArticle)
 
-        function addMultipleAttributes(el, attrs) {
-            for(let key in attrs) {
-                el.setAttribute(key, attrs[key]);
-            }
-        }
+        this.$footerElement.appendChild(elementPrice)
+
         return $elementDiv
     }
+
 }
