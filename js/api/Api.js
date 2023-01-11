@@ -8,7 +8,7 @@ class Api {
     }
 
     async get() {
-        return fetch(this._url)
+        return fetch(this._url {mode: 'no-cors'})
             .then(res => res.json())
             .then(res => {
                 let photographers = res.photographers;
