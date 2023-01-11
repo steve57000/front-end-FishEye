@@ -116,5 +116,7 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-# webstorm
+### webstorm
 .idea
+
+package-lock.json
