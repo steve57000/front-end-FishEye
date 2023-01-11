@@ -1,7 +1,3 @@
-
-#contact_modal {
-    display: none;
-}
 .photographer_section_profil {
     width: 100%;
     display: block;
@@ -38,15 +34,12 @@
     .photographer_card_page_profil figure figcaption {
         grid-column-gap : 100%;
     }
-
 }
 
-.figure-photograph img {
-
-}
 .figure-photograph .photographer_card_info {
     text-align: left;
 }
+
 .figure-photograph .photographer_card_info h1 {
     font-size: calc(1.5rem + 1.8vw);
     letter-spacing: 0.1rem;
@@ -70,78 +63,71 @@
 }
 
 .photograph-media-card {
-    max-width: 300px;
-}
-
-.photograph_media-card video{
-    object-fit: cover;
-}
-
-.contact_button {
-    position: relative;
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    padding: 11px;
-    margin: 0 auto;
-    width: 170px;
-    height: 70px;
-    border: none;
-    background-color: #901C1C;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.modal {
-    border-radius: 5px;
-    background-color: #DB8876;
-    width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    padding: 35px;
-    margin: auto;
+    justify-content: flex-end;
 }
 
-.modal header {
-    justify-content: space-between;
-    width: 100%;
-}
-
-.modal header img {
-    cursor: pointer;
-}
-
-.modal header h2 {
-    font-size: 64px;
-    font-weight: normal;
-    text-align: center;
-}
-
-form {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-form label {
-    color: #312E2E;
-    font-size: 36px;
-}
-
-form div {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: self-start;
-    margin-bottom: 26px;
-}
-
-form input {
-    width: 100%;
-    height: 68px;
-    border: none;
+.photograph-media-card img {
     border-radius: 5px;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+    box-shadow: 0 0 5px 1px dimgrey;
+}
+
+.photograph-media-card img:hover {
+    box-shadow: 0 0 9px 4px #55b8b4;
+    -webkit-transform: scale(1.03);
+    -moz-transform: scale(1.03);
+    -ms-transform: scale(1.03);
+    -o-transform: scale(1.03);
+    transform: scale(1.03);
+}
+
+.photograph-media-card figcaption {
+    height: 43px;
+    width: 100%;
+}
+
+.photograph-media-card figcaption p {
+    margin: 0;
+    width: 85%;
+}
+
+.photograph-media-card img:hover + figcaption {
+    align-items: flex-end;
+}
+.photograph_media-card video{
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.photograph-media-card figcaption {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-photographer-page {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #D3573c;
+    position: fixed;
+    bottom: 0;
+    right: 10px;
+    width: 100%;
+    height: auto;
+    max-width: 376px;
+    max-height: 89px;
+    border-radius: 10px 10px 0 0;
+    box-shadow: -1px 0 9px 0 grey;
+}
+
+#totalLikes {
+    margin-right: 5px;
 }
