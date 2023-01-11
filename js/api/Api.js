@@ -18,9 +18,8 @@ class Api {
                     media
                 }
             })
-            .catch(err => return console.log('an error occurs', err))
+            .catch(err => console.log('an error occurs', err))
     }
-
 }
 
 class PhotographerApi extends Api {

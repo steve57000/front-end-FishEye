@@ -2,9 +2,11 @@
   "name": "fish-eye",
   "version": "1.0.0",
   "description": "Projet 6",
-  "main": "/js/App.js",
+  "main": "index.js",
   "directories": {
-    "lib": "lib"
+    "lib": "lib",
+    "data": "data",
+    "js": "js"
   },
   "scripts": {
     "test": "No test specified"
