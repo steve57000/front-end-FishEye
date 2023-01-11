@@ -1,14 +1,18 @@
 @import url("photographerPageProfil.css");
 @import url("photographer.css");
+@import url("lightbox.css");
+@import url("filterMedia.css");
+@import url("contact.css");
 
 body {
     font-family: "DM Sans", sans-serif;
     margin: 0 auto;
     max-width: 1440px;
+    width: 100%;
 }
 
 header {
-    display: flex;
+    display: flex !important;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -17,11 +21,6 @@ header {
 header a {
     display: inline-block;
     margin-left: 100px;
-}
-
-header a:focus-visible {
-    box-shadow : 0 0 3px 3px #95FFF9;
-    outline: #95FFF9;
 }
 
 h1 {
