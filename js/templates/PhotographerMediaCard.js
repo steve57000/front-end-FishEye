@@ -1,58 +1,85 @@
 class PhotographerMediaCard {
     constructor(mediaPhotographer) {
-        this._mediaCard = mediaPhotographer
+        this._mediaPhotographer = mediaPhotographer
+        this.$wrapper = document.createElement('figure')
+        this.$wrapper.classList.add('photograph-media-card')
     }
 
 
     createPhotographerMedia() {
-        function addMultipleAttributes(el, attrs) {
-            for (let key in attrs) {
-                el.setAttribute(key, attrs[key]);
-            }
-        }
 
-        const $elementFigure = document.createElement('figure')
-        $elementFigure.className ='photograph-media-card'
+        const elementFigcaption = document.createElement('figcaption')
 
-        const elementTitle = document.createElement('p')
-        elementTitle.textContent = `${this._mediaCard.title}`
+        const elementTxt = document.createElement('p')
+        elementTxt.textContent = `${this._mediaPhotographer.title}`
 
-        let elementMedia;
-        if(this._mediaCard.media.attrType === "mp4") {
-            elementMedia = document.createElement('video')
+        const elementSpan = document.createElement('span')
+        elementSpan.className = "like-card counter"
+        elementSpan.textContent = `${this._mediaPhotographer.likes}`
+
+        const elementLinkLike = document.createElement('a')
+        elementLinkLike.href = "#"
+        elementLinkLike.setAttribute('onclick', 'addTotalLikes(this)')
+
+        const elementI = document.createElement( 'i' )
+        addMultipleAttributes(elementI, {
+            'class' : 'fa fa-heart'
+        })
+        elementI.style.color = '#6e6e6e'
+
+        let linkMedia;
+
+        if(this._mediaPhotographer.media.attrType === "mp4") {
+            linkMedia = document.createElement('a')
+            linkMedia.href = '#'
+            linkMedia.setAttribute('onclick' , `openModal()`)
+            const elementMedia = document.createElement('video')
             elementMedia.setAttribute('controls', 'true')
+            addMultipleAttributes(elementMedia, {
+                'style': 'width:300px; height:250px; object-fit:cover;'
+            })
             const elementSource = document.createElement('source')
             addMultipleAttributes(elementSource, {
-                'src': this._mediaCard.media.createLink,
-                'type': 'video/mp4'
+                'src': this._mediaPhotographer.media.createLink,
+                'type': 'video/mp4',
+                'style': 'width:300px; height:250px;'
             })
 
             const elementMediaDownload = document.createElement('a')
-            elementMediaDownload.href = this._mediaCard.media.createLink
+            elementMediaDownload.href = this._mediaPhotographer.media.createLink
             elementMediaDownload.textContent = "Télécharger mp4"
 
-            elementMedia.appendChild(elementSource)
-            elementMedia.appendChild(elementMediaDownload)
+            linkMedia.appendChild(elementSource)
+            linkMedia.appendChild(elementMediaDownload)
+            linkMedia.appendChild(elementMedia)
         }
-        else if(this._mediaCard.media.attrType === "jpg") {
-            elementMedia = document.createElement('img')
+        else if(this._mediaPhotographer.media.attrType === "jpg") {
+            linkMedia = document.createElement('a')
+            linkMedia.href = '#'
+            linkMedia.setAttribute('onclick' , `openModal()`)
+            const elementMedia = document.createElement('img')
             addMultipleAttributes(elementMedia, {
-                'src': this._mediaCard.media.createLink,
-                'href': this._mediaCard.media.createLink,
-                'type': 'image/jpg'
+                'src': this._mediaPhotographer.media.createLink,
+                'type': 'image/jpg',
+                'style': 'width:300px; height:250px;'
             })
+            linkMedia.appendChild(elementMedia)
+
         }
         else {
-            console.log('Il semble avoir un problème avec le type de média: ' + this._mediaCard.media.attrType)
+            throw new Error('Le type de média: ' + this._mediaPhotographer.media.attrType + ', n\'est pas accepter!!')
         }
-        addMultipleAttributes(elementMedia, {
-            'width': 300,
-            'height': 300
-        })
+        linkMedia.setAttribute('tabindex', 0)
+        elementFigcaption.appendChild(elementTxt)
+        elementFigcaption.appendChild(elementSpan)
+        elementLinkLike.appendChild(elementI)
+        elementFigcaption.appendChild(elementLinkLike)
 
-        $elementFigure.appendChild(elementMedia)
-        $elementFigure.appendChild(elementTitle)
+        this.$wrapper.appendChild(linkMedia)
+        this.$wrapper.appendChild(elementFigcaption)
 
-        return $elementFigure
+        return this.$wrapper
     }
+
+
 }
