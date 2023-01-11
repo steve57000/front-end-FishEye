@@ -1,7 +1,4 @@
 {
-  "dependencies": {
-    "eslint": "^8.28.0"
-  },
   "name": "fish-eye",
   "version": "1.0.0",
   "description": "Projet 6",
@@ -9,9 +6,8 @@
   "directories": {
     "lib": "lib"
   },
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "No test specified"
   },
   "repository": {
     "type": "git",

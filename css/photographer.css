@@ -1,5 +1,5 @@
 
-.photographer_section {
+#photographer_section {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 70px;
@@ -7,13 +7,13 @@
 }
 
 @media screen and (max-width: 1080px) {
-    .photographer_section {
+    #photographer_section {
         grid-template-columns: 1fr 1fr;
     }
 }
 
 @media screen and (max-width: 780px) {
-    .photographer_section {
+    #photographer_section {
         grid-template-columns: 1fr ;
     }
 }
@@ -28,19 +28,20 @@
     font-weight: 400;
 }
 
-.photographer_card:focus-visible {
-    box-shadow : 0 0 3px 3px #95FFF9;
-    outline: none;
-}
+/*.photographer_card:focus-visible {*/
+/*    box-shadow : 0 0 3px 3px #55b8b4;*/
+/*    outline: none;*/
+/*}*/
 
 .figure-photograph-home {
+    width: 100%;
     margin: 0;
 }
 
-figure:focus-visible {
-    box-shadow : 0 0 3px 3px #95FFF9;
-    outline: none;
-}
+/*figure:focus-visible {*/
+/*    box-shadow : 0 0 3px 3px #55b8b4;*/
+/*    outline: none;*/
+/*}*/
 
 .figure-photograph-home a {
     display: flex;
@@ -60,10 +61,10 @@ figure:focus-visible {
     text-align: center;
 }
 
-.figure-photograph-home .photographer_card_info:focus-visible {
-    box-shadow : 0 0 3px 3px #95FFF9;
-    outline: none;
-}
+/*.figure-photograph-home .photographer_card_info:focus-visible {*/
+/*    box-shadow : 0 0 3px 3px #55b8b4;*/
+/*    outline: none;*/
+/*}*/
 
 .figure-photograph-home .photographer_card_name {
     color: #D3573C;
@@ -92,9 +93,9 @@ figure .photographer_card_tagline {
     color: #757575;
 }
 
- figure  a:hover,
- figure  a:focus,
- figure  a:focus-visible {
-    box-shadow : 0 0 3px 3px #95FFF9;
-    outline: none;
-}
+/* figure  a:hover,*/
+/* figure  a:focus,*/
+/* figure  a:focus-visible {*/
+/*    box-shadow : 0 0 3px 3px #55b8b4;*/
+/*    outline: none;*/
+/*}*/
