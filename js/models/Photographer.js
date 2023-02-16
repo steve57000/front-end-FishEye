@@ -18,6 +18,3 @@ class Photographer {
     get thumbnail() { return `/assets/thumbnails/${this._portrait}` }
     get price() { return this._price }
 }
-
-
-
