@@ -1,46 +1,31 @@
 class LightboxModal {
     constructor(mediaPhotographer) {
         this._mediaPhotographer = mediaPhotographer;
-
         this.$wrapperLightbox = document.querySelector('.modal-content-slides')
-        this.selectAllMedia = document.querySelectorAll('.photograph-media-card')
-
-        this.numberSlide = 1
-
     }
 
-    createLightbox() {
+    createLightboxDom() {
 
         const lightboxIframe = document.createElement('figure')
         lightboxIframe.className = 'mySlides'
-        addMultipleAttributes( lightboxIframe, {
-            'role' : 'group',
-            'aria-roledescription' : 'slide'
-        })
 
         const elementFigcaption = document.createElement('figcaption')
-        elementFigcaption.id = 'caption-container'
+        elementFigcaption.className = 'caption-container'
 
-        const elementTitle = document.createElement('p')
+        const elementTitle = document.createElement('h2')
         elementTitle.textContent = `${this._mediaPhotographer.title}`
-        elementTitle.id = 'caption'
+        elementTitle.className = 'caption'
 
         elementFigcaption.appendChild(elementTitle)
 
-        for(let i = 0; i < this.selectAllMedia.length; i++) {
-            // console.log(this.$selectAllMedia[i])
-            const mediaElement = this.selectAllMedia[i].childNodes[0]
-            mediaElement.setAttribute('onclick' , `openModal(); currentSlide(${this.numberSlide})`)
-            this.numberSlide += 1
-        }
-
-        if(this._mediaPhotographer.media.attrType === "jpg") {
+        if(this._mediaPhotographer.media.attrType === "webp") {
             const elementMedia = document.createElement('img')
             addMultipleAttributes(elementMedia, {
-                'width': '100%',
-                'height': '800px',
-                'src': this._mediaPhotographer.media.createLink,
-                'style': 'object-fit:scale-down'
+                'width': '800px',
+                'height': '600px',
+                'type': 'image/webp',
+                'src': this._mediaPhotographer.media.createLinkMedium,
+                'alt': this._mediaPhotographer.title
             })
             lightboxIframe.appendChild(elementMedia)
             lightboxIframe.appendChild(elementFigcaption)
@@ -48,10 +33,11 @@ class LightboxModal {
         else if(this._mediaPhotographer.media.attrType === "mp4") {
             if(this._mediaPhotographer.media.attrType === "mp4") {
                 const elementMedia = document.createElement('video')
-                elementMedia.setAttribute('controls', 'true')
                 addMultipleAttributes(elementMedia, {
-                    'style': 'object-fit:cover',
-                    'width': '100%'
+                    'width': '800px',
+                    'height': '600px',
+                    'type': 'video/mp4',
+                    'controls': 'true'
                 })
                 const elementSource = document.createElement('source')
                 addMultipleAttributes(elementSource, {
@@ -69,61 +55,26 @@ class LightboxModal {
                 lightboxIframe.appendChild(elementFigcaption)
             }
         }
-
         return this.$wrapperLightbox.appendChild(lightboxIframe)
+    }
 
+    createLightbox() {
+        const selectAllMedia = document.querySelectorAll('.photograph_media_gallery')
+        let numberSlide = 1
 
+        selectAllMedia.forEach( mediaElement => {
+            mediaElement.setAttribute('onclick' , `openModal(); currentSlide(${numberSlide})`)
+            mediaElement.setAttribute('onkeypress' , `openModal(); currentSlide(${numberSlide})`)
 
-        // for(let i = 0; i < this.$selectAllMedia.length; i++) {
-        //     this.numberSlide += 1
-        //     srcMedia = this.$selectAllMedia[i].currentSrc
-        //     titleMedia = this.$selectAllMedia[i].nextElementSibling.childNodes[0]
-        //
-        //     this.$selectAllMedia[i].setAttribute('onclick' , `openModal(); currentSlide(${this.numberSlide})`)
-        //
-        //     const lightboxIframe = document.createElement('figure')
-        //     lightboxIframe.className = 'mySlides'
-        //
-        //     const elementImg = document.createElement('img')
-        //     elementImg.src = this._mediaPhotographer.media.createLink
-        //     addMultipleAttributes(elementImg, {
-        //         'width': '100%'
-        //     })
-        //
-        //     const elementFigcaption = document.createElement('figcaption')
-        //     elementFigcaption.id = 'caption-container'
-        //
-        //     const elementTitle = document.createElement('p')
-        //     elementTitle.innerText = titleMedia.innerHTML
-        //     elementTitle.id = 'caption'
-        //
-        //     const elementDivMediaDemo = document.createElement('div')
-        //     elementDivMediaDemo.className = 'column'
-        //
-        //     const elementImgDemo = document.createElement('img')
-        //
-        //     addMultipleAttributes(elementImgDemo, {
-        //         'width': '100%',
-        //         'onclick' : `currentSlide(${this.numberSlide})`,
-        //         'src' : this._mediaPhotographer.media.createLink
-        //     })
-        //
-        //
-        //
-        //     lightboxIframe.appendChild(elementImg)
-        //     lightboxIframe.appendChild(elementFigcaption)
-        //
-        //     elementFigcaption.appendChild(elementTitle)
-        //
-        //     this.$wrapperLightboxDiv.appendChild(lightboxIframe)
-        //
-        //
-        //     elementImgDemo.className = 'demo cursor'
-        //     elementDivMediaDemo.appendChild(elementImgDemo)
-        //     containerSlides.appendChild(elementDivMediaDemo)
-        // }
+            const elementImg = mediaElement.childNodes[0]
+            elementImg.setAttribute('aria-labelledby', `title-image${numberSlide}`)
 
+            const titleMedia = mediaElement.parentElement.childNodes[1].childNodes[0]
+            titleMedia.id = `title-image${numberSlide}`
+
+            numberSlide += 1
+        })
+        return this.createLightboxDom()
     }
 
 }
-
