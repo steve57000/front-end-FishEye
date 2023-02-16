@@ -1,87 +1,98 @@
 class App {
-    constructor() {
-        this.$main = document.querySelector('#main')
-        this.$body = document.querySelector('body')
+  constructor() {
+    this.addLinkCssStyle()
+    this.$main = document.querySelector("#main")
+    this.$body = document.querySelector("body")
 
-        this._photographersApi = new PhotographerApi('/data/photographers.json')
+    this._photographersApi = new PhotographerApi("/data/photographers.json")
 
-        this._params = new URL(document.location).searchParams
-        this._idProfil = this._params.get('id')
+    this._params = new URL(document.location).searchParams
+    this._idProfil = this._params.get("id")
 
-        this.FullMedias = []
-        this.FullPhotographers = []
-        this.PhotographerData = []
-    }
+    this.FullMedias = []
+    this.FullPhotographers = []
+    this.PhotographerData = []
+  }
 
-    async CreateDomElement() {
-        const sectionPhotographer = document.createElement('div')
-        sectionPhotographer.id = "photographer_section"
+  async CreateDomElement() {
+      const sectionPhotographer = document.createElement("section")
+      sectionPhotographer.id = "photographer_section"
+      this.$main.appendChild(sectionPhotographer)
+  }
 
-        const filterFormWrapper = document.createElement('div')
-        filterFormWrapper.id = "filter-form-wrapper"
+  addLinkCssStyle(){
+        // Créer un nouvel élément de lien
+        const link = document.createElement('link');
 
-        const photographerMedia = document.createElement('div')
-        photographerMedia.className = "photographer_media"
+        // définir les attributs de l'élément de lien
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = './css/photographerPageProfil.css';
 
-        const footerPhotographerMedia = document.createElement('div')
-        footerPhotographerMedia.className = "footer-photographer-page"
+        // Récupère l'élément d'en-tête HTML à ajouter
+        // élément de lien vers celui-ci
+        document.getElementsByTagName('HEAD')[0].appendChild(link);
+  }
 
-        const createLightboxDiv = document.createElement('div')
-        createLightboxDiv.setAttribute('id', 'myLightbox')
-        createLightboxDiv.classList.add('modal-lightbox')
-        createLightboxDiv.setAttribute('tabindex', '0')
+  async CreateDomElementPageProfil() {
+      const sectionMedia = document.createElement("section")
+      sectionMedia.id = "section-medias"
 
-        const linkClose = document.createElement('button')
-        addMultipleAttributes( linkClose, {
-            'type' : 'button',
-            'onclick' : 'closeModal()',
-            'aria-label' : 'Close slide',
-            'aria-controls' : 'myCarousel',
-             'alt' : 'Close',
-            'tabindex' : '0'
-        })
+      const photographerMedia = document.createElement("div")
+      photographerMedia.className = "photographer_media"
 
-        // const spanCloseElement = document.createElement('span')
-        // spanCloseElement.className = 'close cursor'
-        linkClose.className = 'close cursor'
-        linkClose.innerHTML = '\&times'
+      const createLightboxDiv = document.createElement("div")
+      createLightboxDiv.setAttribute("id", "myLightbox")
+      createLightboxDiv.classList.add("modal-lightbox")
+      createLightboxDiv.setAttribute("tabindex", "-1")
 
-        const previousButton = document.createElement('button')
-        addMultipleAttributes(previousButton, {
-            'type' : 'button',
-            'onclick' : `getSlides(-1)`,
-            'aria-label' : 'Previous slide',
-            'aria-controls' : 'myCarousel',
-            'tabindex' : '0'
-        })
-        previousButton.className = 'previous-button'
-        previousButton.innerHTML = '\&#10094'
+      const linkClose = document.createElement('button')
+      addMultipleAttributes( linkClose, {
+          'type' : 'button',
+          'onclick' : 'closeModal()',
+          'onkeypress': 'closeModal()',
+          'aria-label' : 'Fermez fenêtre médias',
+          'aria-controls' : 'myCarousel',
+          'alt' : 'Close'
+      })
+      linkClose.className = "close cursor"
+      linkClose.innerHTML = "&times"
 
-        const nextButton = document.createElement('button')
-        addMultipleAttributes(nextButton, {
-            'type' : 'button',
-            'onclick' : `getSlides(1)`,
-            'aria-label' : 'Next slide',
-            'aria-controls' : 'myCarousel',
-            'tabindex' : '0'
-        })
-        nextButton.className = 'next-button'
-        nextButton.innerHTML = '\&#10095'
+      const previousButton = document.createElement('button')
+      addMultipleAttributes(previousButton, {
+          'type' : 'button',
+          'onclick' : 'getSlides(-1)',
+          'onkeypress': 'getSlides(-1)',
+          'aria-label' : 'Voir média précédent',
+          'aria-controls' : 'myCarousel'
+      })
+      previousButton.className = 'previous-button'
+      previousButton.innerHTML = '&#10094'
 
-        const wrapperLightboxDiv = document.createElement('div')
-        wrapperLightboxDiv.classList.add('modal-content-slides')
-        wrapperLightboxDiv.id = 'myCarousel'
+      const nextButton = document.createElement('button')
+      addMultipleAttributes(nextButton, {
+          'type' : 'button',
+          'onclick' : `getSlides(1)`,
+          'onkeypress': 'getSlides(1)',
+          'aria-label' : 'Voir média suivant',
+          'aria-controls' : 'myCarousel'
+      })
+      nextButton.className = 'next-button'
+      nextButton.innerHTML = '&#10095'
 
-        createLightboxDiv.appendChild(linkClose)
-        createLightboxDiv.appendChild(previousButton)
-        createLightboxDiv.appendChild(nextButton)
-        createLightboxDiv.appendChild(wrapperLightboxDiv)
+      const wrapperLightboxDiv = document.createElement('div')
+      wrapperLightboxDiv.classList.add('modal-content-slides')
+      wrapperLightboxDiv.id = 'myCarousel'
 
-        this.$main.appendChild(sectionPhotographer)
-        this.$main.appendChild(filterFormWrapper)
-        this.$main.appendChild(photographerMedia)
-        this.$main.appendChild(footerPhotographerMedia)
-        this.$body.childNodes[3].appendChild(createLightboxDiv)
+      createLightboxDiv.appendChild(linkClose)
+      createLightboxDiv.appendChild(previousButton)
+      createLightboxDiv.appendChild(nextButton)
+      createLightboxDiv.appendChild(wrapperLightboxDiv)
+
+      sectionMedia.appendChild(photographerMedia)
+
+      this.$main.appendChild(sectionMedia)
+      this.$body.childNodes[3].appendChild(createLightboxDiv)
     }
 
     async fetchAllData() {
@@ -132,13 +143,14 @@ class App {
     async photographerPageMedia() {
         const sectionPhotographer = document.querySelector('.photographer_media' )
         const Filter = new FilterForm( this.PhotographerData.medias )
-        Filter.render()
-        this.PhotographerData.medias.forEach( mediaPhotographer => {
+        await Filter.render()
+        for (const mediaPhotographer of this.PhotographerData.medias) {
+
             const Template = new PhotographerMediaCard( mediaPhotographer )
             sectionPhotographer.appendChild(
-                Template.createPhotographerMedia()
+                await Template.createPhotographerMedia()
             )
-        })
+        }
     }
 
     async countTotalLikes() {
@@ -159,26 +171,28 @@ class App {
         const sectionLightbox = document.querySelector('.modal-content-slides' )
         sectionLightbox.setAttribute('tabindex', '-1')
 
-        this.PhotographerData.medias.forEach( mediaPhotographer => {
-            const Template = new LightboxModal( mediaPhotographer )
-            sectionLightbox.appendChild(
-                Template.createLightbox()
-            )
-        })
+        const divLightbox = document.querySelector("#myLightbox")
 
+        this.PhotographerData.medias.forEach((mediaPhotographer) => {
+        const Template = new LightboxModal(mediaPhotographer)
+        sectionLightbox.appendChild(Template.createLightbox())
+        })
+        divLightbox.addEventListener("keydown", (lightboxBtnKeyDown))
     }
 
-
     async main() {
+
         await this.CreateDomElement()
         await this.fetchAllData()
 
         if(this._idProfil !== null) {
+            await this.CreateDomElementPageProfil()
             await this.fetchOnlyPhotographerData()
             await this.getPhotographerPage()
             await this.photographerPageMedia()
             await this.countTotalLikes()
             animateNumbersLikes()
+            photographMediaEventListener()
             await this.modalLightbox()
 
             const ModalForm = new Form()
