@@ -4,12 +4,10 @@
   "description": "Projet 6",
   "main": "index.js",
   "directories": {
-    "lib": "lib",
-    "data": "data",
-    "js": "js"
+    "lib": "lib"
   },
   "scripts": {
-    "test": "No test specified"
+    "lint": "eslint ./"
   },
   "repository": {
     "type": "git",
@@ -20,5 +18,10 @@
   "bugs": {
     "url": "https://github.com/steve57000/front-end-FishEye/issues"
   },
-  "homepage": "https://github.com/steve57000/front-end-FishEye#readme"
+  "homepage": "https://github.com/steve57000/front-end-FishEye#readme",
+  "devDependencies": {
+    "eslint": "8.22.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-import": "^2.27.5"
+  }
 }
