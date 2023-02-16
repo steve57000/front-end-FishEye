@@ -1,4 +1,5 @@
 {
+  "homepage": "https://steve57000.github.io/front-end-FishEye/",
   "name": "fish-eye",
   "version": "1.0.0",
   "description": "Projet 6",
@@ -7,7 +8,9 @@
     "lib": "lib"
   },
   "scripts": {
-    "lint": "eslint ./"
+    "lint": "eslint ./",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "repository": {
     "type": "git",
@@ -18,10 +21,11 @@
   "bugs": {
     "url": "https://github.com/steve57000/front-end-FishEye/issues"
   },
-  "homepage": "https://github.com/steve57000/front-end-FishEye#readme",
+
   "devDependencies": {
     "eslint": "8.22.0",
     "eslint-config-prettier": "^8.6.0",
-    "eslint-plugin-import": "^2.27.5"
+    "eslint-plugin-import": "^2.27.5",
+    "gh-pages": "^5.0.0"
   }
 }
