@@ -1,3 +1,6 @@
+@import url("photographerPageProfil.css");
+@import url("keyframes.css");
+@import url("lightbox.css");
 .photographer_section_profil {
     width: 100%;
     display: block;
@@ -6,7 +9,6 @@
 .photograph_header {
     background-color: #FAFAFA;
     height: 300px;
-    margin: 0 100px;
 }
 
 .photographer_card_page_profil {
@@ -36,15 +38,16 @@
     }
 }
 
-.figure-photograph .photographer_card_info {
-    text-align: left;
+#section-medias {
+    max-width: 100%;
+    padding-top: 20px;
 }
 
 .figure-photograph .photographer_card_info h1 {
     font-size: calc(1.5rem + 1.8vw);
     letter-spacing: 0.1rem;
-    text-align: left;
     margin: 0 0 0.4rem 0;
+    color: #d3573c;
 }
 
 .figure-photograph .photographer_card_city {
@@ -58,76 +61,178 @@
 .photographer_media  {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    margin: 20px 100px 0 100px;
-    justify-content: center;
+    justify-items: center;
+    padding-top: 20px;
 }
 
-.photograph-media-card {
+.photographer_media figure {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
+    margin: 0 0 30px 0;
+    max-width: 320px;
+    width: 100%;
 }
 
-.photograph-media-card img {
-    border-radius: 5px;
+
+.photographer_media figure figcaption {
+    height: 43px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.photographer_media figure figcaption .titles-images {
+    margin: 0;
+    letter-spacing: 0.05em;
+    width: 85%;
+}
+
+.photographer_media figure a,
+.photographer_media figure video {
+    width: 100%;
+    cursor: pointer;
+    border-radius: 10px;
     -webkit-transition: all 0.5s;
     -moz-transition: all 0.5s;
     -ms-transition: all 0.5s;
     -o-transition: all 0.5s;
     transition: all 0.5s;
     box-shadow: 0 0 5px 1px dimgrey;
+    overflow: hidden;
+    outline: none;
 }
 
-.photograph-media-card img:hover {
-    box-shadow: 0 0 9px 4px #55b8b4;
-    -webkit-transform: scale(1.03);
-    -moz-transform: scale(1.03);
-    -ms-transform: scale(1.03);
-    -o-transform: scale(1.03);
-    transform: scale(1.03);
+.photographer_media figure a:hover,
+.photographer_media figure a:focus,
+.photographer_media figure video:hover,
+.photographer_media figure video:focus
+{
+    box-shadow: -13px -11px 11px 0 dimgrey;
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
 }
 
-.photograph-media-card figcaption {
+.photographer_media figure img {
+    min-height: 100%;
+    min-width: 100%;
+    width: 350px;
+    height: 250px;
+    border-radius: 10px;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+    background: black;
+}
+
+.photographer_media figure video{
+    border-radius: 10px;
+    background: black;
+}
+
+.photograph_media_gallery:hover > img,
+.photograph_media_gallery:focus > img {
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+.photograph_media_gallery figcaption {
     height: 43px;
     width: 100%;
-}
-
-.photograph-media-card figcaption p {
-    margin: 0;
-    width: 85%;
-}
-
-.photograph-media-card img:hover + figcaption {
-    align-items: flex-end;
-}
-.photograph_media-card video{
-    object-fit: cover;
-    border-radius: 5px;
-}
-
-.photograph-media-card figcaption {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 5px;
+}
+
+.photograph_media_gallery figcaption p {
+    margin: 0;
+    width: 85%;
+    font-size: large;
+}
+
+.color-red {
+    color: #5f0e01;
+    font-weight: bold;
+}
+
+@media (max-width: 1240px) {
+    .photographer_media {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .photographer_media figure {
+        min-width: 350px;
+        max-width: 95%;
+    }
+}
+
+@media (max-width: 880px) {
+    .photographer_media {
+        grid-template-columns: 1fr;
+    }
+}
+
+.like-card {
+    outline: none;
+    margin-left: 3px;
+}
+
+.like-card:hover >.fa ,
+.like-card:focus > .fa {
+    text-shadow: -3px -1px 5px #901c1c;
+    -ms-transform: scale(1.5);
+    transform: scale(1.5);
+}
+
+.fa {
+    cursor: pointer;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
 }
 
 .footer-photographer-page {
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    background-color: #D3573c;
+    justify-content: space-between;
+    background-color: #DB8876;
     position: fixed;
     bottom: 0;
     right: 10px;
     width: 100%;
-    height: auto;
+    height: 100%;
     max-width: 376px;
-    max-height: 89px;
+    max-height: 60px;
     border-radius: 10px 10px 0 0;
     box-shadow: -1px 0 9px 0 grey;
+    padding: 0 10px;
+    font-size: 1.1em;
+    font-weight: 700;
 }
 
-#totalLikes {
-    margin-right: 5px;
+#container-total-likes {
+    width: 50%;
 }
+
+.i-total-likes {
+    padding-left: 4%;
+    cursor: default;
+    font-size: 1.2em;
+    text-shadow: 1px -1px 4px rgba(0, 0, 0, 0.75);
+}
+
+#photographer_card_price {
+    color: black;
+    font-size: 1em;
+}
+
+
+
+
+
+
