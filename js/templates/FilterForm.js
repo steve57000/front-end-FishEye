@@ -1,14 +1,10 @@
 class FilterForm {
     constructor(Medias) {
         this.Medias = Medias;
-
-        this.$filterFormWrapper = document.querySelector('#filter-form-wrapper')
-        addMultipleAttributes(this.$filterFormWrapper, {
-            'role': 'filter',
-            'aria-labelledby': 'filter_label',
-            'aria-hidden': 'true'
-        })
         this.$mediaWrapper = document.querySelector('.photographer_media')
+
+        this.$sectionMedia = document.querySelector('#section-medias')
+        this.$sectionLightbox = document.querySelector('.modal-content-slides' )
 
     }
 
@@ -18,91 +14,153 @@ class FilterForm {
         const AdaptedFilterLib = new FilterMediaAdapter(this.Medias, option)
         const FilteredMedias = await AdaptedFilterLib.filterByOption()
 
-        FilteredMedias.forEach(Medias => {
-            const Template = new PhotographerMediaCard(Medias)
-            this.$mediaWrapper.appendChild(Template.createPhotographerMedia())
-        })
-
+        for (const Medias of FilteredMedias) {
+            const Template =  new  PhotographerMediaCard( Medias)
+            this.$mediaWrapper.appendChild(await Template.createPhotographerMedia())
+        }
+        await this.modalLightbox()
     }
 
-    async onChangeFilter() {
-        const selectElement = this.$filterFormWrapper
-        .querySelectorAll('.select-items')
-        for(let i = 0; i < selectElement.length; i++){
-            selectElement[i].addEventListener('click', e => {
-                const option = e.target.getAttribute('value')
-                this.filterMedias(option)
-            })
-        }
+    async modalLightbox() {
+        this.Medias.forEach( mediaPhotographer => {
+            const Template = new LightboxModal( mediaPhotographer )
+            this.$sectionLightbox.appendChild(
+                Template.createLightbox()
+            )
+        })
     }
 
     clearMediasWrapper() {
         this.$mediaWrapper.innerHTML = ""
+        this.$sectionLightbox.innerHTML = ""
     }
 
-    render() {
+    async buttonFilterMediaListener(){
+        const buttonWrapper = document.querySelector('#filter-select')
+        buttonWrapper.addEventListener('click', (handleBtnClick))
+        buttonWrapper.addEventListener('keydown', (handleBtnKeyDown))
+    }
+
+    async onChangeFilter() {
+        const buttonValue = document.querySelector('#filter-select')
+        const elementRef = this.$sectionMedia.querySelectorAll('.select-items')
+
+        elementRef.forEach(value => {
+            value.addEventListener('click', event => {
+                const option = event.target.getAttribute('value')
+                buttonValue.innerHTML = ''
+                buttonValue.innerHTML = event.target.innerHTML
+                buttonValue.setAttribute('value', option)
+                this.filterMedias(option)
+            })
+
+            value.addEventListener('keydown', event => {
+                const targetNextElement = event.target.nextElementSibling
+                const targetPreviousElement =  event.target.previousElementSibling
+                const option = event.target.getAttribute('value')
+                switch(event.code){
+                    case 'Enter':
+                    case 'Space':
+                        event.preventDefault()
+                        buttonValue.innerHTML = ''
+                        buttonValue.innerHTML = event.target.innerHTML
+                        buttonValue.setAttribute('value', option)
+                        this.filterMedias(option)
+                        break
+
+                    case 'ArrowUp':
+                    case 'ArrowLeft':
+                        event.preventDefault()
+                        targetPreviousElement.focus()
+                        break
+
+                    case 'ArrowDown':
+                    case 'ArrowRight':
+                        event.preventDefault()
+                        targetNextElement.focus()
+                        break
+
+                    case 'Escape':
+                        event.preventDefault()
+                        buttonValue.focus()
+                        break
+
+                    default :
+                        return
+                }
+            })
+        })
+    }
+
+    async createSectionFilter(){
         const choiceOption = [
             {
-                'value' : 'popularity',
+                'value': 'popularity',
                 'texte': 'Popularité'
             },
             {
-                'value' : 'date',
+                'value': 'date',
                 'texte': 'Date'
             },
             {
-                'value' : 'title',
+                'value': 'title',
                 'texte': 'Titre'
             }]
 
+        const filterFormWrapper = document.createElement('aside')
+        filterFormWrapper.id = "filter-form-wrapper"
 
-        const elementLabel = document.createElement('label')
+        const elementLabel = document.createElement('h3')
         addMultipleAttributes(elementLabel, {
-            'for': 'filter-select',
+            'aria-labelledby': 'filter-select',
             'id': 'filter_label'
         })
         elementLabel.textContent = 'Trier par: '
 
+        const containerFilter = document.createElement('div')
+        containerFilter.id = 'container-filter'
+
         const elementInput = document.createElement('button')
         addMultipleAttributes(elementInput, {
-            'tabindex': 0,
-            'id' : 'filter-select',
-            'data-toggle': 'dropdown-content',
-            'data-target': '#myDropdown',
-            'onclick' : 'toggleShow(this)'
+            'id': 'filter-select',
+            'aria-label': 'Filtrer les médias par: ',
+            'aria-expanded': 'false',
+            'aria-haspopup': 'false',
+            'tabindex': 0
         })
 
-        const elementDivDropdown = document.createElement('div')
+        const elementDivDropdown = document.createElement('ol')
         elementDivDropdown.className = 'dropdown-content'
         elementDivDropdown.id = 'myDropdown'
         addMultipleAttributes(elementDivDropdown, {
             'tabindex': '-1',
-            'role': 'filter',
-            'aria-labelledby': 'filter_label',
-            'aria-hidden': 'true'
         })
 
         for (let i = 0; i < choiceOption.length; i++) {
-            elementInput.innerHTML = choiceOption[0].texte
-            const elementLink = document.createElement('button')
-            elementLink.setAttribute('value', choiceOption[i].value)
-            elementLink.innerHTML = choiceOption[i].texte
-            addMultipleAttributes(elementLink, {
+            const elementList = document.createElement('li')
+            elementList.setAttribute('value', choiceOption[i].value)
+            elementList.innerHTML = choiceOption[i].texte
+            addMultipleAttributes(elementList, {
                 'class': 'select-items',
-                'tabindex': 0,
-                'data-dismiss': 'dropdown-content',
-                'onclick': 'changeInputValue(this)'
+                'id': choiceOption[i].value,
+                'tabindex': '0',
+                'aria-label': 'trier medias par ' + choiceOption[i].texte
             })
-            elementDivDropdown.appendChild(elementLink)
+            elementInput.innerHTML = 'Veuillez choisir'
+            elementDivDropdown.appendChild(elementList)
         }
 
-        this.$filterFormWrapper.appendChild(elementLabel)
-        this.$filterFormWrapper.appendChild(elementInput)
+        filterFormWrapper.appendChild(elementLabel)
+        containerFilter.appendChild(elementInput)
+        containerFilter.appendChild(elementDivDropdown)
+        filterFormWrapper.appendChild(containerFilter)
 
-        this.$filterFormWrapper.appendChild(elementDivDropdown)
+        this.$sectionMedia.insertBefore(filterFormWrapper, this.$sectionMedia.firstChild)
+    }
 
-        this.onChangeFilter()
+    async render() {
+        await this.createSectionFilter()
+        await this.onChangeFilter()
+        await this.buttonFilterMediaListener()
     }
 }
-
-
