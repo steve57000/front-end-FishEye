@@ -1,37 +1,111 @@
-@import url("photographerPageProfil.css");
 @import url("photographer.css");
-@import url("lightbox.css");
 @import url("filterMedia.css");
 @import url("contact.css");
-
 body {
     font-family: "DM Sans", sans-serif;
     margin: 0 auto;
     max-width: 1440px;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-header {
+#header {
     display: flex !important;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     height: 90px;
+    position: relative;
 }
-header a {
+
+#header a {
     display: inline-block;
-    margin-left: 100px;
+    padding: 4px;
+    text-align: center;
+    outline: none;
 }
 
 h1 {
     color: #901C1C;
-    margin-right: 100px;
 }
- h1:focus-visible {
-     box-shadow : 0 0 3px 3px #95FFF9;
-     outline: none;
- }
+
 .logo {
+    width: 200px;
     height: 50px;
 }
 
+#header, #main {
+    max-width: 85%;
+    width: 100%;
+}
+
+#main {
+    padding-bottom: 50px;
+}
+
+#logo-shadow {
+    display: inline-block;
+    visibility: hidden;
+    color: transparent;
+    font-size: 54px;
+    position: absolute;
+    z-index: -1;
+    top: 3px;
+    left: 2px;
+}
+
+#logo-shadow:after {
+    display: block;
+    content: '';
+    border-bottom: solid 5px #901C1C;
+    transform: scaleX(0);
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -ms-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    border-radius: 3px;
+}
+
+#header a:hover ~ #logo-shadow,
+#header a:focus ~ #logo-shadow {
+    font-size: 54px;
+    color: transparent;
+    text-shadow: -5px 8px 4px #adadad;
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration:0.5s ;
+    -o-transition-duration: 0.5s;
+    transition-duration: 0.5s ;
+    visibility: visible;
+}
+
+#header a:hover + #logo-shadow:after,
+#header a:focus + #logo-shadow:after {
+    -ms-transform: scaleX(1);
+    transform: scaleX(1);
+    box-shadow: -5px 8px 4px #adadad;
+}
+
+#logoCamera {
+    display: inline-block;
+    margin: 0 5px;
+    width: 35px;
+    height: 30px;
+    background-image: url("../assets/favicon.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -ms-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
+    opacity: 0;
+}
+
+#header a:hover ~ #logo-shadow #logoCamera,
+#header a:focus ~ #logo-shadow #logoCamera {
+    opacity: 1;
+    box-shadow: -5px 8px 5px #adadad;
+}
