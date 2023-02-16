@@ -17,12 +17,13 @@ class PhotographerMedia {
         switch (this._media_image ? this._media_image : this._media_video){
             case this._media_image :
                 return {
-                    "createLink": `./assets/SamplePhotos/mediumQuality/${this._photographerId}/${this._media_image}`,
-                    "attrType": "jpg"
+                    "createLinkLow": `./assets/SamplePhotos/lowQuality/${this._photographerId}/${this._media_image}`,
+                    "createLinkMedium": `./assets/SamplePhotos/mediumQuality/${this._photographerId}/${this._media_image}`,
+                    "attrType": "webp"
                 }
             case this._media_video :
                 return {
-                    "createLink": `./assets/SamplePhotos/mediumQuality/${this._photographerId}/${this._media_video}`,
+                    "createLink": `./assets/SamplePhotos/lowQuality/${this._photographerId}/${this._media_video}`,
                     "attrType": "mp4"
                 }
             default:
