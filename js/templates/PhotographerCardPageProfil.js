@@ -1,42 +1,51 @@
 class PhotographerCardPageProfil {
     constructor(photographer) {
-        this._photographer = photographer;
-        this.$footerElement = document.querySelector('.footer-photographer-page')
+        this._photographer = photographer
+
+        this.$mainfooter = document.querySelector('#main')
+        this.$footerElement = document.createElement('div')
+        this.$footerElement.className = 'footer-photographer-page'
 
         const elementDivLikes = document.createElement('div')
+        elementDivLikes.id = 'container-total-likes'
 
         const elementSpanLikes = document.createElement('span')
         elementSpanLikes.id = 'totalLikes'
-        const elementI = document.createElement( 'i' )
+        const elementI = document.createElement( 'strong' )
         elementI.setAttribute('class' , 'fa fa-heart i-total-likes')
         elementI.style.color = 'red'
 
         elementDivLikes.appendChild( elementSpanLikes )
         elementDivLikes.appendChild( elementI )
         this.$footerElement.appendChild( elementDivLikes )
+        this.$mainfooter.appendChild(this.$footerElement)
+        this.modifyTitleHead()
 
     }
-
-    modifyPhotographerCard() {
+    modifyTitleHead(){
         // Get HTML head element
         const head = document.getElementsByTagName('HEAD')[0];
 
-        const selectTitle = head.childNodes[13]
-        selectTitle.textContent = 'Fisheye - photographe'
+        const selectTitle = head.childNodes[1]
+        selectTitle.textContent = `Fisheye - Profil de ${this._photographer.name}, voir ses photos et entrer en contact`
+    }
 
-        const changeClassNameSection = document.getElementById('photographer_section')
-        changeClassNameSection.id = 'photographer_section_profil'
-
+    modifyPhotographerCard() {
+        const changeIdNameSection = document.getElementById('photographer_section')
+        changeIdNameSection.id = 'photographer_section_profil'
+        
         const $elementDiv = document.createElement( 'div' )
         $elementDiv.classList.add('photograph_header')
 
         const elementButton = document.createElement( 'button' )
-        elementButton.className = 'contact_button'
         addMultipleAttributes(elementButton, {
-            'tabindex': 0,
-            'data-toggle': 'modal',
-            'data-target': '#contact_modal',
-            'onclick': 'displayModal()'
+            'id': 'contact_button',
+            'onclick': 'displayModal(this)',
+            'onkeypress': 'displayModal(this)',
+            'aria-label': `Contactez ${this._photographer.name}`,
+            'aria-expanded': 'false',
+            'aria-controls': 'contact_modal',
+            'aria-haspopup': 'false',
         })
         elementButton.textContent = 'Contactez-moi'
 
@@ -52,7 +61,8 @@ class PhotographerCardPageProfil {
         elementImage.className = 'object-position'
         addMultipleAttributes(elementImage,{
             'width': '200',
-            'height': '200'
+            'height': '200',
+            'aria-labelledby': 'photographer-name'
         })
 
         const elementFigcaption = document.createElement('figcaption')
@@ -60,18 +70,19 @@ class PhotographerCardPageProfil {
 
 
         const elementName = document.querySelector('h1')
+        elementName.id = 'photographer-name'
         elementName.textContent = `${this._photographer.name}`
 
-        const elementCity = document.createElement('p')
+        const elementCity = document.createElement('h2')
         elementCity.className = 'photographer_card_city'
         elementCity.innerHTML = `${this._photographer._city}, ${this._photographer._country}`
 
-        const elementTagline = document.createElement('p')
+        const elementTagline = document.createElement('q')
         elementTagline.className = 'photographer_card_tagline'
         elementTagline.innerHTML = `${this._photographer._tagline}`
 
         const elementPrice = document.createElement('p')
-        elementPrice.className = 'photographer_card_price'
+        elementPrice.id= 'photographer_card_price'
         elementPrice.innerHTML = `${this._photographer._price}\u20AC/Jour `
 
         // Append link element to HTML
@@ -83,7 +94,6 @@ class PhotographerCardPageProfil {
 
         elementFigure.appendChild(elementButton)
         elementFigure.appendChild(elementImage)
-        // elementFigcaption.appendChild(elementPrice)
 
         elementArticle.appendChild(elementFigure)
 
