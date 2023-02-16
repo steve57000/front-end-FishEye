@@ -5,34 +5,51 @@ function addMultipleAttributes(el, attrs) {
 }
 
 function addTotalLikes(e) {
+    let likeSingleCardtotal
+    let totalLikes
+
     const spanTotalLikes = document.querySelector('#totalLikes')
     const spanColorLikes = e.childNodes[0]
-    const spanLikes = e.previousElementSibling
-    console.log(e)
-    console.log(spanColorLikes)
-    spanLikes.textContent = Number(spanLikes.textContent) + 1
-    spanColorLikes.style.color = 'red'
-    e.setAttribute('onclick', 'removeTotalLikes(this)')
 
-    let totalLikes = 1
+    const colorTxtTitle = e.parentNode.childNodes[0]
+    const colorNumber = e.parentNode.childNodes[1]
+
+    const buttonLikes = e
+    e.addEventListener('mouseleave', (e) => {
+        e.target.blur()
+    })
+    let spanLikes = e.previousElementSibling
+
+    if(buttonLikes.hasAttribute('data-likes')) {
+        colorTxtTitle.classList.remove('color-red')
+        colorNumber.classList.remove('color-red')
+        buttonLikes.removeAttribute('data-likes')
+        buttonLikes.removeAttribute('aria-label')
+        buttonLikes.setAttribute('aria-label', "Je n'aime pas")
+        likeSingleCardtotal = -1
+        totalLikes = -1
+        spanColorLikes.style.color = '#6e6e6e'
+
+    }
+    else{
+        colorTxtTitle.classList.add('color-red')
+        colorNumber.classList.add('color-red')
+
+        buttonLikes.removeAttribute('aria-label')
+        buttonLikes.setAttribute('data-likes', 'Likes')
+        buttonLikes.setAttribute('aria-label', "J'aime")
+        likeSingleCardtotal = 1
+        totalLikes = 1
+        spanColorLikes.style.color = 'red'
+    }
+
+    likeSingleCardtotal += Number(spanLikes.textContent)
     totalLikes += Number(spanTotalLikes.textContent)
 
-    return spanTotalLikes.textContent = new Intl.NumberFormat().format(totalLikes)
-}
-
-function removeTotalLikes(e) {
-    const spanTotalLikes = document.querySelector('#totalLikes')
-    const spanColorLikes = e.childNodes[0]
-    const spanLikes = e.previousElementSibling
-    spanLikes.textContent = Number(spanLikes.textContent) - 1
-
-    spanColorLikes.style.color = '#6e6e6e'
-    e.setAttribute('onclick', 'addTotalLikes(this)')
-
-    let totalLikes = -1
-    totalLikes += Number(spanTotalLikes.textContent)
-
-    return spanTotalLikes.textContent = new Intl.NumberFormat().format(totalLikes)
+    return [
+        spanTotalLikes.textContent = new Intl.NumberFormat().format(totalLikes),
+        spanLikes.textContent = new Intl.NumberFormat().format(likeSingleCardtotal)
+    ]
 }
 
 function animateNumbersLikes() {
@@ -69,7 +86,6 @@ function animateNumbersLikes() {
                 window.cancelAnimationFrame(window.requestAnimationFrame(step));
             }
         };
-
         window.requestAnimationFrame(step);
     };
 
@@ -78,9 +94,3 @@ function animateNumbersLikes() {
     const animationDuration = getSpeed(counters);
     animate(counters, countTo, animationDuration);
 }
-
-
-
-
-
-
