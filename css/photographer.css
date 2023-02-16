@@ -1,8 +1,7 @@
-
 #photographer_section {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 70px;
+    gap: 70px 40px;
     margin-top: 100px;
 }
 
@@ -26,76 +25,123 @@
     align-items: center;
     flex-direction: column;
     font-weight: 400;
+    animation: anim-modal-open 0.5s linear;
 }
-
-/*.photographer_card:focus-visible {*/
-/*    box-shadow : 0 0 3px 3px #55b8b4;*/
-/*    outline: none;*/
-/*}*/
 
 .figure-photograph-home {
     width: 100%;
     margin: 0;
 }
 
-/*figure:focus-visible {*/
-/*    box-shadow : 0 0 3px 3px #55b8b4;*/
-/*    outline: none;*/
-/*}*/
-
 .figure-photograph-home a {
+    /*max-height: */
+    position: relative;
     display: flex;
     flex-direction: column;
+    background-color: transparent ;
     align-items: center;
     text-decoration: none;
+    outline: none;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: border-radius 1s, background-color 1s, transform 1s;
+}
+
+.figure-photograph-home a:hover,
+.figure-photograph-home a:focus
+{
+    border-radius: 10% 10%;
+    background-color: #FAFAFA;
+    transform: scale(1.2);
+    box-shadow: 2px -2px 9px #0000008f, 3px -4px 9px #db8876;
 }
 
 .figure-photograph-home img,
 .figure-photograph img {
     border-radius: 50%;
     object-fit: cover;
+    border: 3px solid transparent;
 }
 
-.figure-photograph-home .photographer_card_info,
-.figure-photograph-home .photographer_card_name {
+.figure-photograph-home a > img,
+.photographer_card_name {
+    transition: all 1s;
+}
+
+.figure-photograph-home a:hover > img,
+.figure-photograph-home a:focus > img
+{
+    border: 3px solid white;
+    box-shadow: 2px -3px 9px 4px #0000008f, -2px 3px 9px 3px #db8876;
+    transform: scale(1.05);
+    border-radius: 10%;
+}
+
+.photographer_card_info,
+.photographer_card_name {
     text-align: center;
 }
 
-/*.figure-photograph-home .photographer_card_info:focus-visible {*/
-/*    box-shadow : 0 0 3px 3px #55b8b4;*/
-/*    outline: none;*/
-/*}*/
-
-.figure-photograph-home .photographer_card_name {
+.photographer_card_name {
+    display: inline-block;
     color: #D3573C;
-    font-size: 36px;
-    margin: 0.5em 0 0.2em 0;
+    font-size: 1.8em;
+    margin: 0.5em 0 0 0;
+    animation: anim-figcaption 0.5s linear;
 }
 
-.figure-photograph-home .photographer_card_city,
-.figure-photograph-home .photographer_card_tagline,
-.figure-photograph-home .photographer_card_price
-{
-    margin: 0 0 0.5em 0;
+.photographer_card_name:after {
+    display: block;
+    content: "";
+    border-bottom: solid 5px white;
+    border-radius: 3px;
+    transform: scaleX(0);
+    transition: all 1s;
 }
 
-figure .photographer_card_city {
+.figure-photograph-home a:hover > .photographer_card_name:after,
+.figure-photograph-home a:focus > .photographer_card_name:after {
+    transform: scaleX(1);
+    box-shadow: 1px -1px 6px 1px black, 2px -3px 2px 0 #db8876;
+}
+
+@media screen and (min-width : 1420px) {
+    .photographer_card_name {
+        font-size : 2.5em ;
+    }
+}
+
+.figure-photograph-home a:hover > .photographer_card_name,
+.figure-photograph-home a:focus > .photographer_card_name {
+    text-shadow: 2px -2px 5px black, 2px -2px 0 #db8876;
+    color: white;
+}
+
+.photographer_card_city,
+.photographer_card_tagline,
+.photographer_card_price {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin: 0 0 0.2em 0;
+}
+
+.photographer_card_city {
     color: #901C1C;
     font-size: 19px;
+    animation: anim-figcaption-revert 0.5s linear;
 }
 
-figure .photographer_card_tagline {
+.photographer_card_tagline {
     font-size: 13px;
+    animation: anim-figcaption 0.5s linear;
 }
 
- figure .photographer_card_price {
-    font-size: 11px;
-    color: #757575;
+ .photographer_card_price {
+     font-size: 11px;
+     color: #757575;
+     animation: anim-figcaption-revert 0.5s linear;
 }
 
-/* figure  a:hover,*/
-/* figure  a:focus,*/
-/* figure  a:focus-visible {*/
-/*    box-shadow : 0 0 3px 3px #55b8b4;*/
-/*    outline: none;*/
-/*}*/
+
