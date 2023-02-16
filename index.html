@@ -1,22 +1,28 @@
 <!Doctype HTML>
-<html lang="fr">
+<html lang="fr-FR">
   <head>
+    <title>Fisheye - Photographes</title>
+    
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+    <meta name="description" content="Trouvez un photographe, voir ses créations photos et vidéos et prendre contact avec lui ">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <meta name="author" content="Steve Bell">
     
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="./css/style.css" rel="stylesheet" >
-    <title>Fisheye</title>
+    
 
   </head>
   <body>
-    <header>
-        <a href="index.html" >
-          <img src="assets/images/logo.png" class="logo" alt="Lien vers la page d'accueil Fisheye">
+    <header id="header">
+        <a href="index.html" target="_self">
+          <img src="assets/images/logo.png" class="logo" alt="Logo Fisheye" width="512" height="128" >
         </a>
+        <div id="logo-shadow" aria-hidden="true">Fish<span id="logoCamera"> </span>ye</div>
         <h1>Nos photographes</h1>
     </header>
     
@@ -31,6 +37,8 @@
     <script src="./js/utils/lightbox.js"></script>
     <script src="./js/utils/filtersMedias.js"></script>
     <script src="./js/utils/myFunction.js"></script>
+    <script src="./js/utils/menuAria.js"></script>
+    <script src="./js/utils/mediaFocus.js"></script>
     
     <!-- Factory -->
     <script src="./js/factories/PhotographersFactory.js"></script>
@@ -49,9 +57,6 @@
     <script src="./js/templates/FilterForm.js"></script>
     <script src="./js/templates/LightboxModal.js"></script>
     <script src="./js/templates/ModalForm.js"></script>
-
-    <!--  Decorators  -->
-<!--    <script src="./js/decorators/imgCardWithLightbox.js"></script>-->
     
     <!--  Db  -->
     <script src="./js/db/User.js"></script>
@@ -61,19 +66,6 @@
     
     <!--  Entry point  -->
     <script src="./js/App.js"></script>
-    
-    <!--  Jquery/ Bootstrap  -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script
-            src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-            crossorigin="anonymous"
-    ></script>
-    <script
-            src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-            crossorigin="anonymous"
-    ></script>
-  
+
   </body>
 </html>
