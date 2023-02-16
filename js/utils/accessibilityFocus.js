@@ -10,7 +10,6 @@ function addFocusElement(groupElements, focusElementType) {
 
     document.addEventListener('keydown', (event) => {
         let isTabPressed = event.key === 'Tab' || event.keyCode === 9 ;
-
         if (!isTabPressed) {
             return
         }
@@ -20,7 +19,7 @@ function addFocusElement(groupElements, focusElementType) {
                 lastFocusableElement.focus(); // ajouter le focus pour le dernier élément focalisable
                 event.preventDefault();
             }
-        } else { // si la touche de tabulation est enfoncée
+        }else { // si la touche de tabulation est enfoncée
             if (document.activeElement === lastFocusableElement) { // si la focalisation a atteint le dernier élément focalisable, alors focalisez le premier élément focalisable après avoir appuyé sur la tabulation
                 firstFocusableElement.focus(); // ajouter le focus pour le premier élément focalisable
                 event.preventDefault();
@@ -28,11 +27,4 @@ function addFocusElement(groupElements, focusElementType) {
         }
     });
     firstFocusableElement.focus();
-}
-
-function addLikesKeyEnter(event) {
-    let isTabPressed = event.key === 'enter'
-    if(isTabPressed) {
-        addTotalLikes(event)
-    }
 }
