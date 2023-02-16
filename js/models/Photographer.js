@@ -1,13 +1,13 @@
 class Photographer {
-    constructor(data) {
-        this._name = data.name
-        this._id = data.id
-        this._country = data.country
-        this._city = data.city
-        this._tagline = data.tagline
-        this._portrait = data.portrait
-        this._price = data.price
-    }
+  constructor(data) {
+    this._name = data.name
+    this._id = data.id
+    this._country = data.country
+    this._city = data.city
+    this._tagline = data.tagline
+    this._portrait = data.portrait
+    this._price = data.price
+  }
 
     get name() { return this._name }
     get id() { return this._id }
