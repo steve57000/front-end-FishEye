@@ -33,9 +33,6 @@
         grid-template-columns: 1fr 1fr;
 
     }
-    .photographer_card_page_profil figure figcaption {
-        grid-column-gap : 100%;
-    }
 }
 
 #section-medias {
@@ -165,7 +162,6 @@
 
     .photographer_media figure {
         min-width: 350px;
-        max-width: 95%;
     }
 }
 
@@ -201,9 +197,9 @@
     align-items: center;
     justify-content: space-between;
     background-color: #DB8876;
-    position: fixed;
+    position: absolute;
     bottom: 0;
-    right: 10px;
+    right: 100px;
     width: 100%;
     height: 100%;
     max-width: 376px;

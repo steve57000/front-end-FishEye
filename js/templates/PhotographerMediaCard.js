@@ -2,7 +2,6 @@ class PhotographerMediaCard {
     constructor(mediaPhotographer) {
         this._mediaPhotographer = mediaPhotographer
         this.$wrapper = document.querySelector('.photographer_media')
-
     }
 
     async createPhotographerMedia(){
@@ -70,7 +69,7 @@ class PhotographerMediaCard {
             linkMedia.appendChild(elementMedia)
         }
         else {
-            throw new Error('Le type de média: ' + this._mediaPhotographer.media.attrType + ', n\'est pas accepter!!')
+            throw new Error('Le type de média: ' + this._mediaPhotographer.media.attrType + ', n\'est pas accepter!!' + this._mediaPhotographer.media)
         }
 
         elementFigcaption.appendChild(elementTxt)

@@ -14,21 +14,21 @@ class PhotographerMedia {
     get photographerId() { return this._photographerId }
     get title() { return this._title }
     get media() {
-        switch (this._media_image ? this._media_image : this._media_video){
-            case this._media_image :
-                return {
-                    "createLinkLow": `./assets/SamplePhotos/lowQuality/${this._photographerId}/${this._media_image}`,
-                    "createLinkMedium": `./assets/SamplePhotos/mediumQuality/${this._photographerId}/${this._media_image}`,
-                    "attrType": "webp"
-                }
-            case this._media_video :
-                return {
-                    "createLink": `./assets/SamplePhotos/lowQuality/${this._photographerId}/${this._media_video}`,
-                    "attrType": "mp4"
-                }
-            default:
-                console.log(`Il semble qu'il y est une erreur avec le media: ${this._id} du photographe id : ${this._photographerId}`)
-        }
+            switch (this._media_image ? this._media_image : this._media_video) {
+                case this._media_image :
+                    return {
+                        "createLinkLow": `./assets/SamplePhotos/lowQuality/${this._photographerId}/${this._media_image}`,
+                        "createLinkMedium": `./assets/SamplePhotos/mediumQuality/${this._photographerId}/${this._media_image}`,
+                        "attrType": "webp"
+                    }
+                case this._media_video :
+                    return {
+                        "createLink": `./assets/SamplePhotos/lowQuality/${this._photographerId}/${this._media_video}`,
+                        "attrType": "mp4"
+                    }
+                default:
+                    return null
+            }
     }
     get likes() { return this._likes }
     get date() { return this._date }
