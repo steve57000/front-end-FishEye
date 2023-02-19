@@ -15,8 +15,20 @@ class App {
   }
 
   async CreateDomElement() {
+      const divAffichKeyDown = document.createElement('span')
+      divAffichKeyDown.id = 'affiche-keydown'
+      divAffichKeyDown.innerHTML = "Vous utilisez la vue clavier, pour désactiver appuyer sur 'Alt Gr'"
+      divAffichKeyDown.style.display = 'none'
+
+      const spanKeyDown = document.createElement('span')
+      spanKeyDown.id = 'affiche-keydown-show'
+      spanKeyDown.innerHTML = ''
+
       const sectionPhotographer = document.createElement("section")
       sectionPhotographer.id = "photographer_section"
+
+      divAffichKeyDown.appendChild(spanKeyDown)
+      this.$main.appendChild(divAffichKeyDown)
       this.$main.appendChild(sectionPhotographer)
   }
 
@@ -182,6 +194,8 @@ class App {
     async main() {
         await this.CreateDomElement()
         await this.fetchAllData()
+        const eventKeyboard = document.querySelector("body")
+        eventKeyboard.addEventListener('keydown', (showKeyCode))
 
         if(this._idProfil !== null) {
             await this.CreateDomElementPageProfil()

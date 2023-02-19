@@ -110,3 +110,29 @@ h1 {
     opacity: 1;
     box-shadow: -5px 8px 5px #adadad;
 }
+
+#affiche-keydown {
+    flex-direction: column;
+    position: fixed;
+    background-color: white;
+    /*border: 2px solid red;*/
+    box-shadow: 0 0 4px 1px black;
+    z-index: 1000;
+    padding: 15px;
+}
+
+#affiche-keydown-show {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    padding-top: 10px;
+    text-align: center;
+    border: 1px solid #5f0e01;
+}
+
+#keydown-txt {
+    font: 1.5em bold;
+    color: #5f0e01;
+    margin: 10px 0;
+    /*text-align: center;*/
+}
