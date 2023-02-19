@@ -6,5 +6,4 @@ class FilterMediaAdapter {
     async filterByOption() {
         return await Filter.filterByOption(this.option, this.Medias)
     }
-
 }
