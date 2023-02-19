@@ -145,7 +145,6 @@ class App {
         const Filter = new FilterForm( this.PhotographerData.medias )
         await Filter.render()
         for (const mediaPhotographer of this.PhotographerData.medias) {
-
             const Template = new PhotographerMediaCard( mediaPhotographer )
             sectionPhotographer.appendChild(
                 await Template.createPhotographerMedia()
@@ -181,7 +180,6 @@ class App {
     }
 
     async main() {
-
         await this.CreateDomElement()
         await this.fetchAllData()
 
