@@ -1,5 +1,5 @@
 class PhotographersFactory {
-    constructor(data, type, id){
+    constructor(data, type){
         // Si le type correspond à l'ancienne API, alors retourne moi l'ancien formattage
         if (type === 'allPhotographers') {
             return new Photographer(data)
