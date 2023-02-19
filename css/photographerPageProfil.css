@@ -197,7 +197,7 @@
     align-items: center;
     justify-content: space-between;
     background-color: #DB8876;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     right: 100px;
     width: 100%;
