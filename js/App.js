@@ -4,7 +4,7 @@ class App {
     this.$main = document.querySelector("#main")
     this.$body = document.querySelector("body")
 
-    this._photographersApi = new PhotographerApi("/data/photographers.json")
+    this._photographersApi = new PhotographerApi("/front-end-FishEye/data/photographers.json")
 
     this._params = new URL(document.location).searchParams
     this._idProfil = this._params.get("id")
