@@ -3,7 +3,6 @@
   "name": "fish-eye",
   "version": "1.0.0",
   "description": "Projet 6",
-  "main": "index.js",
   "directories": {
     "lib": "lib"
   },
