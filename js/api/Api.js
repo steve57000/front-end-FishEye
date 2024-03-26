@@ -4,7 +4,7 @@ class Api {
    * @param {string} url
    */
   constructor(url) {
-    this._url = url;
+    this._url = url.concat('front-end-FishEye/');
   }
 
   async get() {
