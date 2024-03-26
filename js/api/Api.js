@@ -5,9 +5,11 @@ class Api {
    */
   constructor(url) {
     this._url = url.concat('front-end-FishEye/');
+    console.log(url)
   }
 
   async get() {
+    console.log(this._url)
     return fetch(this._url)
       .then((res) => res.json())
       .then((res) => {
